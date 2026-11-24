@@ -1,4 +1,6 @@
 package com.bcs.battle_command_system.user.entity;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import com.bcs.battle_command_system.role.entity.Role;
 import com.bcs.battle_command_system.team.entity.Team;
@@ -32,8 +34,12 @@ public class User {
     @JoinColumn(name = "team_id")
     private Team team;
 
+    @CreationTimestamp
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
+    @UpdateTimestamp
+    @Column(nullable = false)
     private LocalDateTime updatedAt;
 
 

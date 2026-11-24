@@ -1,5 +1,7 @@
 package com.bcs.battle_command_system.user.dto;
 
+import java.time.LocalDateTime;
+
 import com.bcs.battle_command_system.role.entity.Role;
 import com.bcs.battle_command_system.user.entity.User;
 
@@ -8,7 +10,9 @@ public record UserDto(
         String name,
         String email,
         Role role,
-        Long teamId
+        Long teamId,
+        LocalDateTime createdAt,
+        LocalDateTime updatedAt
 ) {
 
     public static UserDto from(User user) {
@@ -20,7 +24,9 @@ public record UserDto(
                 user.getRole(),
                 user.getTeam() != null
                         ? user.getTeam().getId()
-                        : null
+                        : null,
+                        user.getCreatedAt(),
+                        user.getUpdatedAt()
         );
     }
 }
